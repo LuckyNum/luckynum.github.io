@@ -1,0 +1,1028 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="安卓,工具," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Lch · blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="#什么是Android1.1G-4G 速度不同: 1G：大哥大 2G：小灵通 gsm wap.baidu.com 3G：沃 4G:lte 100M/s 5G:华为 6亿美金 10G/s (小公司卖产品，大公司买版权)">
+<meta name="keywords" content="安卓,工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓-开始">
+<meta property="og:url" content="https://luckynum.github.io/programming/2017-06-19-安卓-开始.html">
+<meta property="og:site_name" content="Lch · blog">
+<meta property="og:description" content="#什么是Android1.1G-4G 速度不同: 1G：大哥大 2G：小灵通 gsm wap.baidu.com 3G：沃 4G:lte 100M/s 5G:华为 6亿美金 10G/s (小公司卖产品，大公司买版权)">
+<meta property="og:image" content="http://i.imgur.com/EdWqnS1.jpg">
+<meta property="og:updated_time" content="2017-06-19T10:25:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安卓-开始">
+<meta name="twitter:description" content="#什么是Android1.1G-4G 速度不同: 1G：大哥大 2G：小灵通 gsm wap.baidu.com 3G：沃 4G:lte 100M/s 5G:华为 6亿美金 10G/s (小公司卖产品，大公司买版权)">
+<meta name="twitter:image" content="http://i.imgur.com/EdWqnS1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'HTZYK5DRE1',
+      apiKey: '053b1ec29e8980b33145a4640a2229a7',
+      indexName: 'blog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"找文章，网速不好有点慢","hits_empty":"没有找到这个关键词: ${query}","hits_stats":"找到 ${hits} 条，用时 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luckynum.github.io/programming/2017-06-19-安卓-开始.html"/>
+
+
+
+
+
+  <title>安卓-开始 | Lch · blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9db474b60c2192249f944fe9c0d20640";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband">
+      <!-- 左上角 fork me on github -->
+<!--       <a href="https://github.com/luckynum"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a> -->
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Lch · blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">尘归尘，土归土</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-music">
+          <a href="/music/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-music"></i> <br />
+            
+            音乐
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-picture">
+          <a href="/picture/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-photo"></i> <br />
+            
+            图片
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luckynum.github.io/programming/2017-06-19-安卓-开始.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lch">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lch · blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">安卓-开始</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-19T13:12:44+08:00">
+                2017-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/programming/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#什么是Android<br><strong>1.1G-4G</strong></p>
+<pre><code>速度不同:
+1G：大哥大
+2G：小灵通 gsm wap.baidu.com
+3G：沃
+4G:lte 100M/s
+5G:华为 6亿美金 10G/s (小公司卖产品，大公司买版权)
+</code></pre><a id="more"></a>
+<p><strong>2.Android</strong></p>
+<pre><code>T-Mobile G1
+安迪鲁宾
+</code></pre><p><strong>3.安卓版本介绍</strong></p>
+<pre><code>安卓版本        API level
+    2.3            10
+    3.0            11
+    4.0            14
+    4.1.2        16
+</code></pre><p><strong>4.安卓系统的构成</strong></p>
+<pre><code>[1]linux (c)
+[2]函数库层 (c/c++)
+    |-libraries(开源库)
+    |-andriod runtime
+[3]Application framework 应用框架层(谷歌工程师封装)
+[4]最上层 应用层     
+</code></pre><p><strong>5.JVM与DVM</strong></p>
+<pre><code>由于版权原因
+JVM
+编译过程:.java-&gt;.class-&gt;.jar
+基于架构:基于栈的架构(内存)
+    jdk javac
+DVM(dalvik vm)
+编译过程:.java-&gt;.class-&gt;.dex(一个文件)-&gt;.odex
+基于架构:基于寄存器的架构(CPU)
+    sdk dex
+</code></pre><p><strong>6.ART模式</strong><br>    art模式:快，免去了Dalvik模式要实时转化代码<br>            占内存<br>    Dalvik:省内存，慢</p>
+<p>#Android开发环境的搭建<br><strong>1.IDE</strong></p>
+<pre><code>eclipse ibm公司(java开发的)
+    adt-bundle-windows-x86_64(eclips+sdk集成好的)
+    [1]JDK
+    [2]解压即可用
+    adt-bundle
+        |-eclipse
+            |-plugins(插件文件夹)
+        |-sdk
+            |-docs(帮助文档)
+            |-.android(AVD创建模拟器所需文件)
+            |-add-ons(预留目录)
+            |-sources(各个安卓版本源代码)
+            |-temp(临时文件)
+            |-platforms(开发平台)
+            |-platforms-tools(开发工具)
+                |-dx.bat(把.class变成一个dex文件)
+                |-aapt(Android应用打包工具)
+                |-adb(Android调试桥)
+        |-SDK-Manager.exe
+
+Android studio(硬件要求较高)
+</code></pre><p><strong>2.SDK Manager</strong></p>
+<pre><code>管理SDK(安卓版本分类)
+使用:1.翻墙    2.找国内资源
+关于SDK Manager打不开的问题
+1.JAVA_HOME环境变量是否设置
+2.JAVA_HOME环境变量格式
+    注意要加上双引号
+    ×D:\Program Files\Java\jdk1.7.0_79
+    √&quot;D:\Program Files\Java\jdk1.7.0_79&quot;
+intel:生产CPU 
+arm:生产标准
+mips:生产处理器
+Extras文件夹:
+    android额外的lib
+    Intel加速器
+    USB Driver:真机驱动
+</code></pre><p><strong>3.模拟器</strong></p>
+<pre><code>1.真机调试
+[1]手机助手
+[2]官网驱动
+
+2.模拟器
+配置低(小屏幕)
+    常见:320*480/480*800/1280*720
+Target手机版本
+    安卓版本        API level
+    2.3            10
+    3.0            11
+    4.0            14
+    4.1.2        16
+CPU:AMD-&gt;ARM Intel-&gt;Intel
+
+RAM:随机访问内存(相当于电脑内存条,断电丢数据)
+ROM:只读存储器(相当于与一块小硬盘)
+Internal Storage:内置存储器
+VM Heap:DVM默认给每个应用分配的空间
+
+Wipe user data:删除用户数据(恢复出厂设置)
+</code></pre><p><strong>4.DDMS透视图</strong></p>
+<pre><code>调试监控服务工具
+</code></pre><p>#Android工程</p>
+<p><strong>1.安卓项目树</strong></p>
+<pre><code>ProjectName
+    |-src(存放源代码)
+    |-gen(存放R文件，R文件是资源索引)
+    |-Android 4.3(安卓的SDK库和API库)
+    |-Android Dependencies(其他的jar包,比如android-support.jar版本支持包)
+    |-assets(资产目录:多用来存放mp3,视频类文件,此文件夹文件不会在R文件产生索引)
+    |-bin(APK文件)
+    |-libs(额外的jar包)
+    |-res(资源目录)
+    |    |-drawable(图片资源)
+    |    |-layout(界面布局)
+    |    |-values(字符串)
+    |-AndroidManifest.xml(清单文件:配置四大组件
+                &lt;Activity/broadCastReceiver/service/ContentProvider&gt;
+                         )
+</code></pre><p><strong>2.程序打包&amp;安装</strong></p>
+<p><img src="http://i.imgur.com/EdWqnS1.jpg" alt=""></p>
+<pre><code>工具集在&lt;D:\devSoft\adt\sdk\platform-tools&gt;
+dx.bat(把.class变成一个dex文件)
+aapt(Android应用打包工具)
+adb(Android调试桥)
+</code></pre><p><strong>3.ADB指令练习</strong></p>
+<pre><code>1.配置环境变量path
+    D:\devSoft\adt\sdk\platform-tools
+2.使用
+    [1]kill-server                 杀死adb服务
+    [2]start-server                开启服务
+    [3]adb install apkName         部署在模拟器
+    [4]adb uninstall 包名        卸载app
+    [5]adb shell                手机终端(linux指令) 退出Crtl+C
+    [6]adb push 文件名 手机目录    文件到手机
+    [7]adb pull 文件路径         文件到电脑
+</code></pre><p>#手机拨号器案例</p>
+<p><strong>1.开发步骤</strong></p>
+<pre><code>[0]需求分析
+[1]画UI
+[2]根据UI写对应的业务逻辑
+[3]测试
+</code></pre><p><strong>2.按钮的四种点击事件</strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>谢谢您请我吃糖！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wxqr.jpg" alt="Lch WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/zfbqr.jpg" alt="Lch Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/安卓/" rel="tag"># 安卓</a>
+          
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/programming/2017-06-18-hexo部署步骤.html" rel="next" title="hexo部署步骤">
+                <i class="fa fa-chevron-left"></i> hexo部署步骤
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/programming/2017-06-19-【转】安卓-三种菜单介绍.html" rel="prev" title="【转】安卓-三种菜单介绍">
+                【转】安卓-三种菜单介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTE0OC81NzE2"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Lch" />
+          <p class="site-author-name" itemprop="name">Lch</p>
+           
+              <p class="site-description motion-element" itemprop="description">programming lovers</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luckynum" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/araonlee" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-coffee"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lch</span>
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

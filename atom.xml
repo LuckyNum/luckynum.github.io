@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Lch · blog</title>
+  <subtitle>尘归尘，土归土</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://luckynum.github.io/"/>
+  <updated>2017-07-20T15:55:39.922Z</updated>
+  <id>https://luckynum.github.io/</id>
+  
+  <author>
+    <name>Lch</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【转】hexo的next主题个性化配置（一）</title>
+    <link href="https://luckynum.github.io//%E5%8D%9A%E5%AE%A2/2017-06-22-%E3%80%90%E8%BD%AC%E3%80%91hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE.html"/>
+    <id>https://luckynum.github.io//博客/2017-06-22-【转】hexo的next主题个性化配置.html</id>
+    <published>2017-06-22T11:26:13.000Z</published>
+    <updated>2017-07-20T15:55:39.922Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://segmentfault.com/a/1190000009544924" target="_blank" rel="external">原文</a></p>
+<p>看到有些next主题的网站很炫酷，那么是怎么配置的呢？接下来我会讲一讲如何实现一些炫酷的效果看到有些next主题的网站很炫酷，那么是怎么配置的呢？接下来我会讲一讲如何实现一些炫酷的效果。<br><a id="more"></a></p>
+<h2 id="1-在右上角或者右下角实现fork-me-on-github"><a href="#1-在右上角或者右下角实现fork-me-on-github" class="headerlink" title="1. 在右上角或者右下角实现fork me on github"></a>1. 在右上角或者右下角实现fork me on github</h2><h3 id="实现效果图"><a href="#实现效果图" class="headerlink" title="实现效果图"></a>实现效果图</h3><p><img src="http://i4.piimg.com/1949/adaf6afa2fca8d17.jpg" alt="Markdown"></p>
+<h3 id="具体实现方法"><a href="#具体实现方法" class="headerlink" title="具体实现方法"></a>具体实现方法</h3><p>点击<a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">这里</a> 挑选自己喜欢的样式，并复制代码。例如，我是复制如下代码：<br><img src="http://i4.piimg.com/1949/b36ac9cf034f5a49.jpg" alt="Markdown"><br>然后粘贴刚才复制的代码到 themes/next/layout/_layout.swig 文件中(放在<code>&lt;div class=&quot;headband&quot;&gt;&lt;/div&gt;</code>的下面)，并把 href 改为你的github地址。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"headband"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 左上角 fork me on github --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://github.com/luckynum"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">"position: absolute; top: 0; left: 0; border: 0;"</span> <span class="attr">src</span>=<span class="string">"https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67"</span> <span class="attr">alt</span>=<span class="string">"Fork me on GitHub"</span> <span class="attr">data-canonical-src</span>=<span class="string">"https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="2-添加RSS"><a href="#2-添加RSS" class="headerlink" title="2.添加RSS"></a>2.添加RSS</h2><p>NexT5.1.1版本后，参考<a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">这里</a></p>
+<h3 id="实现效果图-1"><a href="#实现效果图-1" class="headerlink" title="实现效果图"></a>实现效果图</h3><p><img src="http://i4.piimg.com/1949/fea73b8781bba3ac.jpg" alt="Markdown"></p>
+<h3 id="具体实现方法-1"><a href="#具体实现方法-1" class="headerlink" title="具体实现方法"></a>具体实现方法</h3><p>切换到你的blog（我是取名blog，具体的看你们的取名是什么）的路径，例如我是在<code>/Users/chenzekun/Code/Hexo/blog</code>这个路径上，也就是在你的根目录下。<br>然后安装 Hexo 插件：(这个插件会放在 node_modules 这个文件夹里)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install --save hexo-generator-feed</div></pre></td></tr></table></figure></p>
+<p>然后打开hexo的配置文件<code>_config.yml</code>，在里面的末尾添加：( 请注意 在冒号后面要加一个空格，不然会发生错误！)<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: http://hexo.io/plugins/</div><div class="line">plugins: hexo-generate-feed</div></pre></td></tr></table></figure></p>
+<p>然后打开next主题文件夹里面的<code>_config.yml</code>,在里面配置为如下样子：(就是在 rss: 的后面加上<code>/atom.xml</code>, 注意 在冒号后面要加一个空格)<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Set rss to false to disable feed link.</div><div class="line"># Leave rss as empty to use site's feed link.</div><div class="line"># Set rss to specific value if you have burned your feed already.</div><div class="line">rss: /atom.xml</div></pre></td></tr></table></figure></p>
+<p>配置完之后运行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div></pre></td></tr></table></figure></p>
+<p>重新生成一次，你会在<code>./public</code> 文件夹中看到<code>atom.xml</code> 文件。然后启动服务器查看是否有效，之后再部署到 Github 中。</p>
+<h2 id="3-添加动态背景"><a href="#3-添加动态背景" class="headerlink" title="3. 添加动态背景"></a>3. 添加动态背景</h2><p>版本&lt;5.1.0详情点击<a href="http://shenzekun.cn/hexo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF.html" target="_blank" rel="external"><code>博客</code></a></p>
+<p>版本&gt;=5.1.0详情点击<a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external"><code>官方配置</code></a></p>
+<h2 id="4-实现点击出现桃心效果"><a href="#4-实现点击出现桃心效果" class="headerlink" title="4. 实现点击出现桃心效果"></a>4. 实现点击出现桃心效果</h2><p>在网址输入或直接点击<a href="http://7u2ss1.com1.z0.glb.clouddn.com/love.js" target="_blank" rel="external"><code>http://7u2ss1.com1.z0.glb.clouddn.com/love.js</code></a><br>然后将里面的代码copy一下，新建<code>love.js</code>文件并且将代码复制进去，然后保存。将<code>love.js</code>文件放到路径<code>/themes/next/source/js/src</code>里面，然后打开 <code>\themes\next\layout\_layout.swig</code>文件,在末尾（在前面引用会出现找不到的bug）添加以下代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 页面点击小红心 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/js/src/love.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="5-修改文章内链接文本样式"><a href="#5-修改文章内链接文本样式" class="headerlink" title="5. 修改文章内链接文本样式"></a>5. 修改文章内链接文本样式</h2><h3 id="实现效果图-2"><a href="#实现效果图-2" class="headerlink" title="实现效果图"></a>实现效果图</h3><p><img src="http://i2.muimg.com/1949/d1fd62276312ab66.jpg" alt="Markdown"></p>
+<h3 id="具体实现方法-2"><a href="#具体实现方法-2" class="headerlink" title="具体实现方法"></a>具体实现方法</h3><p>修改文件<code>themes\next\source\css\_common\components\post\post.styl</code>，在末尾添加如下css样式：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">// 文章内链接文本样式</div><div class="line">.post-body p a&#123;</div><div class="line">  color: #0593d3;</div><div class="line">  border-bottom: none;</div><div class="line">  border-bottom: 1px solid #0593d3;</div><div class="line">  &amp;:hover &#123;</div><div class="line">    color: #fc6423;</div><div class="line">    border-bottom: none;</div><div class="line">    border-bottom: 1px solid #fc6423;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中选择<code>.post-body</code>是为了不影响标题，选择<code>p</code> 是为了不影响首页“阅读全文”的显示样式,颜色可以自己定义。</p>
+<h2 id="6-修改文章底部的那个带-号的标签"><a href="#6-修改文章底部的那个带-号的标签" class="headerlink" title="6. 修改文章底部的那个带#号的标签"></a>6. 修改文章底部的那个带#号的标签</h2><p>修改模板<code>/themes/next/layout/_macro/post.swig</code>，搜索<code>rel=&quot;tag&quot;&gt;#</code>，将<code>#</code>换成<code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000009544924&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原文&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;看到有些next主题的网站很炫酷，那么是怎么配置的呢？接下来我会讲一讲如何实现一些炫酷的效果看到有些next主题的网站很炫酷，那么是怎么配置的呢？接下来我会讲一讲如何实现一些炫酷的效果。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="博客" scheme="https://luckynum.github.io/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="hexo" scheme="https://luckynum.github.io/tags/hexo/"/>
+    
+      <category term="主题美化" scheme="https://luckynum.github.io/tags/%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【转】安卓-三种菜单介绍</title>
+    <link href="https://luckynum.github.io//programming/2017-06-19-%E3%80%90%E8%BD%AC%E3%80%91%E5%AE%89%E5%8D%93-%E4%B8%89%E7%A7%8D%E8%8F%9C%E5%8D%95%E4%BB%8B%E7%BB%8D.html"/>
+    <id>https://luckynum.github.io//programming/2017-06-19-【转】安卓-三种菜单介绍.html</id>
+    <published>2017-06-19T10:12:44.000Z</published>
+    <updated>2017-06-22T11:26:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Android的菜单分为三种类型：选项菜单(Option Menu)、上下文菜单(Context Menu)、子菜单(Sub Menu)<br><a id="more"></a></p>
+<h2 id="一．选项菜单"><a href="#一．选项菜单" class="headerlink" title="一．选项菜单"></a>一．选项菜单</h2><p>当用户单击设备上的菜单按钮（Menu），触发事件弹出的菜单就是选项菜单。选项菜单最多只有六个，超过六个第六个就会自动显示 更多 选项来展示显示。<br>创建方法：</p>
+<ol>
+<li>覆盖Activity的onCreateOptionsMenu(Menu menu)方法，当我们第一次打开菜单时调用。</li>
+<li>调用Menu的add()方法添加菜单项(MenuItem)，可以调用MenuItem的setIcon()方法为菜单项设置图标。</li>
+<li>当菜单项(MenuItem)被选中时，覆盖Acitivy的onOptionsMenuSelected()方法响应事件。</li>
+</ol>
+<h2 id="二、上下文菜单"><a href="#二、上下文菜单" class="headerlink" title="二、上下文菜单"></a>二、上下文菜单</h2><p>用户长按Activity页面时，弹出的菜单我们称为上下文菜单。我们经常在Windows中用鼠标右键单击弹出的菜单就是上下文菜单。</p>
+<ol>
+<li>覆盖Activity的onCreateContextMenu()方法，调用Menu的add方法添加菜单项MenuItem</li>
+<li>覆盖onContextItemSelected()方法，响应菜单单击事件</li>
+<li>调用registerForContextMenu()方法，为视图注册上下文菜单</li>
+</ol>
+<h2 id="三、子菜单"><a href="#三、子菜单" class="headerlink" title="三、子菜单"></a>三、子菜单</h2><p>子菜单就是将相同功能的分组进行多级显示的一种菜单，比如，Windows的“文件”菜单中就有“新建”，“打开”，“关闭”等子菜单。</p>
+<p>创建子菜单的方法</p>
+<ol>
+<li>覆盖Activity的onCreateOptionsMenu()方法，调用Menu的addSubMenu()方法添加子菜单项</li>
+<li>调用SubMenu的add()饭饭，添加子菜单项</li>
+<li>覆盖onCreateItemSelected()方法，响应菜单单击事件</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//程序测试</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"Hello World!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Android的菜单分为三种类型：选项菜单(Option Menu)、上下文菜单(Context Menu)、子菜单(Sub Menu)&lt;br&gt;
+    
+    </summary>
+    
+      <category term="编程" scheme="https://luckynum.github.io/categories/programming/"/>
+    
+    
+      <category term="安卓" scheme="https://luckynum.github.io/tags/%E5%AE%89%E5%8D%93/"/>
+    
+      <category term="工具" scheme="https://luckynum.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓-开始</title>
+    <link href="https://luckynum.github.io//programming/2017-06-19-%E5%AE%89%E5%8D%93-%E5%BC%80%E5%A7%8B.html"/>
+    <id>https://luckynum.github.io//programming/2017-06-19-安卓-开始.html</id>
+    <published>2017-06-19T05:12:44.000Z</published>
+    <updated>2017-06-19T10:25:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>#什么是Android<br><strong>1.1G-4G</strong></p>
+<pre><code>速度不同:
+1G：大哥大
+2G：小灵通 gsm wap.baidu.com
+3G：沃
+4G:lte 100M/s
+5G:华为 6亿美金 10G/s (小公司卖产品，大公司买版权)
+</code></pre><a id="more"></a>
+<p><strong>2.Android</strong></p>
+<pre><code>T-Mobile G1
+安迪鲁宾
+</code></pre><p><strong>3.安卓版本介绍</strong></p>
+<pre><code>安卓版本        API level
+    2.3            10
+    3.0            11
+    4.0            14
+    4.1.2        16
+</code></pre><p><strong>4.安卓系统的构成</strong></p>
+<pre><code>[1]linux (c)
+[2]函数库层 (c/c++)
+    |-libraries(开源库)
+    |-andriod runtime
+[3]Application framework 应用框架层(谷歌工程师封装)
+[4]最上层 应用层     
+</code></pre><p><strong>5.JVM与DVM</strong></p>
+<pre><code>由于版权原因
+JVM
+编译过程:.java-&gt;.class-&gt;.jar
+基于架构:基于栈的架构(内存)
+    jdk javac
+DVM(dalvik vm)
+编译过程:.java-&gt;.class-&gt;.dex(一个文件)-&gt;.odex
+基于架构:基于寄存器的架构(CPU)
+    sdk dex
+</code></pre><p><strong>6.ART模式</strong><br>    art模式:快，免去了Dalvik模式要实时转化代码<br>            占内存<br>    Dalvik:省内存，慢</p>
+<p>#Android开发环境的搭建<br><strong>1.IDE</strong></p>
+<pre><code>eclipse ibm公司(java开发的)
+    adt-bundle-windows-x86_64(eclips+sdk集成好的)
+    [1]JDK
+    [2]解压即可用
+    adt-bundle
+        |-eclipse
+            |-plugins(插件文件夹)
+        |-sdk
+            |-docs(帮助文档)
+            |-.android(AVD创建模拟器所需文件)
+            |-add-ons(预留目录)
+            |-sources(各个安卓版本源代码)
+            |-temp(临时文件)
+            |-platforms(开发平台)
+            |-platforms-tools(开发工具)
+                |-dx.bat(把.class变成一个dex文件)
+                |-aapt(Android应用打包工具)
+                |-adb(Android调试桥)
+        |-SDK-Manager.exe
+
+Android studio(硬件要求较高)
+</code></pre><p><strong>2.SDK Manager</strong></p>
+<pre><code>管理SDK(安卓版本分类)
+使用:1.翻墙    2.找国内资源
+关于SDK Manager打不开的问题
+1.JAVA_HOME环境变量是否设置
+2.JAVA_HOME环境变量格式
+    注意要加上双引号
+    ×D:\Program Files\Java\jdk1.7.0_79
+    √&quot;D:\Program Files\Java\jdk1.7.0_79&quot;
+intel:生产CPU 
+arm:生产标准
+mips:生产处理器
+Extras文件夹:
+    android额外的lib
+    Intel加速器
+    USB Driver:真机驱动
+</code></pre><p><strong>3.模拟器</strong></p>
+<pre><code>1.真机调试
+[1]手机助手
+[2]官网驱动
+
+2.模拟器
+配置低(小屏幕)
+    常见:320*480/480*800/1280*720
+Target手机版本
+    安卓版本        API level
+    2.3            10
+    3.0            11
+    4.0            14
+    4.1.2        16
+CPU:AMD-&gt;ARM Intel-&gt;Intel
+
+RAM:随机访问内存(相当于电脑内存条,断电丢数据)
+ROM:只读存储器(相当于与一块小硬盘)
+Internal Storage:内置存储器
+VM Heap:DVM默认给每个应用分配的空间
+
+Wipe user data:删除用户数据(恢复出厂设置)
+</code></pre><p><strong>4.DDMS透视图</strong></p>
+<pre><code>调试监控服务工具
+</code></pre><p>#Android工程</p>
+<p><strong>1.安卓项目树</strong></p>
+<pre><code>ProjectName
+    |-src(存放源代码)
+    |-gen(存放R文件，R文件是资源索引)
+    |-Android 4.3(安卓的SDK库和API库)
+    |-Android Dependencies(其他的jar包,比如android-support.jar版本支持包)
+    |-assets(资产目录:多用来存放mp3,视频类文件,此文件夹文件不会在R文件产生索引)
+    |-bin(APK文件)
+    |-libs(额外的jar包)
+    |-res(资源目录)
+    |    |-drawable(图片资源)
+    |    |-layout(界面布局)
+    |    |-values(字符串)
+    |-AndroidManifest.xml(清单文件:配置四大组件
+                &lt;Activity/broadCastReceiver/service/ContentProvider&gt;
+                         )
+</code></pre><p><strong>2.程序打包&amp;安装</strong></p>
+<p><img src="http://i.imgur.com/EdWqnS1.jpg" alt=""></p>
+<pre><code>工具集在&lt;D:\devSoft\adt\sdk\platform-tools&gt;
+dx.bat(把.class变成一个dex文件)
+aapt(Android应用打包工具)
+adb(Android调试桥)
+</code></pre><p><strong>3.ADB指令练习</strong></p>
+<pre><code>1.配置环境变量path
+    D:\devSoft\adt\sdk\platform-tools
+2.使用
+    [1]kill-server                 杀死adb服务
+    [2]start-server                开启服务
+    [3]adb install apkName         部署在模拟器
+    [4]adb uninstall 包名        卸载app
+    [5]adb shell                手机终端(linux指令) 退出Crtl+C
+    [6]adb push 文件名 手机目录    文件到手机
+    [7]adb pull 文件路径         文件到电脑
+</code></pre><p>#手机拨号器案例</p>
+<p><strong>1.开发步骤</strong></p>
+<pre><code>[0]需求分析
+[1]画UI
+[2]根据UI写对应的业务逻辑
+[3]测试
+</code></pre><p><strong>2.按钮的四种点击事件</strong></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#什么是Android&lt;br&gt;&lt;strong&gt;1.1G-4G&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;速度不同:
+1G：大哥大
+2G：小灵通 gsm wap.baidu.com
+3G：沃
+4G:lte 100M/s
+5G:华为 6亿美金 10G/s (小公司卖产品，大公司买版权)
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="编程" scheme="https://luckynum.github.io/categories/programming/"/>
+    
+    
+      <category term="安卓" scheme="https://luckynum.github.io/tags/%E5%AE%89%E5%8D%93/"/>
+    
+      <category term="工具" scheme="https://luckynum.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo部署步骤</title>
+    <link href="https://luckynum.github.io//programming/2017-06-18-hexo%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4.html"/>
+    <id>https://luckynum.github.io//programming/2017-06-18-hexo部署步骤.html</id>
+    <published>2017-06-18T09:17:44.000Z</published>
+    <updated>2017-06-22T11:28:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h2><h3 id="每次部署的步骤，可按以下三步来进行。"><a href="#每次部署的步骤，可按以下三步来进行。" class="headerlink" title="每次部署的步骤，可按以下三步来进行。"></a>每次部署的步骤，可按以下三步来进行。</h3><pre><code>hexo clean
+hexo generate
+hexo deploy
+</code></pre><a id="more"></a>
+<h3 id="一些常用命令："><a href="#一些常用命令：" class="headerlink" title="一些常用命令："></a>一些常用命令：</h3><pre><code>hexo new&quot;postName&quot; #新建文章
+hexo new page&quot;pageName&quot; #新建页面
+hexo generate #生成静态页面至public目录
+hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
+hexo deploy #将.deploy目录部署到GitHub
+hexo help # 查看帮助
+hexo version #查看Hexo的版本
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;部署步骤&quot;&gt;&lt;a href=&quot;#部署步骤&quot; class=&quot;headerlink&quot; title=&quot;部署步骤&quot;&gt;&lt;/a&gt;部署步骤&lt;/h2&gt;&lt;h3 id=&quot;每次部署的步骤，可按以下三步来进行。&quot;&gt;&lt;a href=&quot;#每次部署的步骤，可按以下三步来进行。&quot; class=&quot;headerlink&quot; title=&quot;每次部署的步骤，可按以下三步来进行。&quot;&gt;&lt;/a&gt;每次部署的步骤，可按以下三步来进行。&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;hexo clean
+hexo generate
+hexo deploy
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="编程" scheme="https://luckynum.github.io/categories/programming/"/>
+    
+    
+      <category term="编程" scheme="https://luckynum.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的第一篇</title>
+    <link href="https://luckynum.github.io//uncategorized/2017-06-18-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87.html"/>
+    <id>https://luckynum.github.io//uncategorized/2017-06-18-我的第一篇.html</id>
+    <published>2017-06-18T09:07:11.000Z</published>
+    <updated>2017-06-18T09:08:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="你好，欢迎来到我的博客"><a href="#你好，欢迎来到我的博客" class="headerlink" title="你好，欢迎来到我的博客"></a>你好，欢迎来到我的博客</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;你好，欢迎来到我的博客&quot;&gt;&lt;a href=&quot;#你好，欢迎来到我的博客&quot; class=&quot;headerlink&quot; title=&quot;你好，欢迎来到我的博客&quot;&gt;&lt;/a&gt;你好，欢迎来到我的博客&lt;/h3&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

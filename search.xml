@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[【转】hexo的next主题个性化配置（一）]]></title>
+    <url>%2F%2F%E5%8D%9A%E5%AE%A2%2F2017-06-22-%E3%80%90%E8%BD%AC%E3%80%91hexo%E7%9A%84next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE.html</url>
+    <content type="text"><![CDATA[原文 看到有些next主题的网站很炫酷，那么是怎么配置的呢？接下来我会讲一讲如何实现一些炫酷的效果看到有些next主题的网站很炫酷，那么是怎么配置的呢？接下来我会讲一讲如何实现一些炫酷的效果。 1. 在右上角或者右下角实现fork me on github实现效果图 具体实现方法点击这里 挑选自己喜欢的样式，并复制代码。例如，我是复制如下代码：然后粘贴刚才复制的代码到 themes/next/layout/_layout.swig 文件中(放在&lt;div class=&quot;headband&quot;&gt;&lt;/div&gt;的下面)，并把 href 改为你的github地址。123456&lt;div class="headband"&gt; &lt;!-- 左上角 fork me on github --&gt; &lt;a href="https://github.com/luckynum"&gt; &lt;img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"&gt; &lt;/a&gt;&lt;/div&gt; 2.添加RSSNexT5.1.1版本后，参考这里 实现效果图 具体实现方法切换到你的blog（我是取名blog，具体的看你们的取名是什么）的路径，例如我是在/Users/chenzekun/Code/Hexo/blog这个路径上，也就是在你的根目录下。然后安装 Hexo 插件：(这个插件会放在 node_modules 这个文件夹里)1$ npm install --save hexo-generator-feed 然后打开hexo的配置文件_config.yml，在里面的末尾添加：( 请注意 在冒号后面要加一个空格，不然会发生错误！)123# Extensions## Plugins: http://hexo.io/plugins/plugins: hexo-generate-feed 然后打开next主题文件夹里面的_config.yml,在里面配置为如下样子：(就是在 rss: 的后面加上/atom.xml, 注意 在冒号后面要加一个空格)1234# Set rss to false to disable feed link.# Leave rss as empty to use site's feed link.# Set rss to specific value if you have burned your feed already.rss: /atom.xml 配置完之后运行：1$ hexo g 重新生成一次，你会在./public 文件夹中看到atom.xml 文件。然后启动服务器查看是否有效，之后再部署到 Github 中。 3. 添加动态背景版本&lt;5.1.0详情点击博客 版本&gt;=5.1.0详情点击官方配置 4. 实现点击出现桃心效果在网址输入或直接点击http://7u2ss1.com1.z0.glb.clouddn.com/love.js然后将里面的代码copy一下，新建love.js文件并且将代码复制进去，然后保存。将love.js文件放到路径/themes/next/source/js/src里面，然后打开 \themes\next\layout\_layout.swig文件,在末尾（在前面引用会出现找不到的bug）添加以下代码：12&lt;!-- 页面点击小红心 --&gt;&lt;script type="text/javascript" src="/js/src/love.js"&gt;&lt;/script&gt; 5. 修改文章内链接文本样式实现效果图 具体实现方法修改文件themes\next\source\css\_common\components\post\post.styl，在末尾添加如下css样式：1234567891011// 文章内链接文本样式.post-body p a&#123; color: #0593d3; border-bottom: none; border-bottom: 1px solid #0593d3; &amp;:hover &#123; color: #fc6423; border-bottom: none; border-bottom: 1px solid #fc6423; &#125;&#125; 其中选择.post-body是为了不影响标题，选择p 是为了不影响首页“阅读全文”的显示样式,颜色可以自己定义。 6. 修改文章底部的那个带#号的标签修改模板/themes/next/layout/_macro/post.swig，搜索rel=&quot;tag&quot;&gt;#，将#换成&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>主题美化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[【转】安卓-三种菜单介绍]]></title>
+    <url>%2F%2Fprogramming%2F2017-06-19-%E3%80%90%E8%BD%AC%E3%80%91%E5%AE%89%E5%8D%93-%E4%B8%89%E7%A7%8D%E8%8F%9C%E5%8D%95%E4%BB%8B%E7%BB%8D.html</url>
+    <content type="text"><![CDATA[Android的菜单分为三种类型：选项菜单(Option Menu)、上下文菜单(Context Menu)、子菜单(Sub Menu) 一．选项菜单当用户单击设备上的菜单按钮（Menu），触发事件弹出的菜单就是选项菜单。选项菜单最多只有六个，超过六个第六个就会自动显示 更多 选项来展示显示。创建方法： 覆盖Activity的onCreateOptionsMenu(Menu menu)方法，当我们第一次打开菜单时调用。 调用Menu的add()方法添加菜单项(MenuItem)，可以调用MenuItem的setIcon()方法为菜单项设置图标。 当菜单项(MenuItem)被选中时，覆盖Acitivy的onOptionsMenuSelected()方法响应事件。 二、上下文菜单用户长按Activity页面时，弹出的菜单我们称为上下文菜单。我们经常在Windows中用鼠标右键单击弹出的菜单就是上下文菜单。 覆盖Activity的onCreateContextMenu()方法，调用Menu的add方法添加菜单项MenuItem 覆盖onContextItemSelected()方法，响应菜单单击事件 调用registerForContextMenu()方法，为视图注册上下文菜单 三、子菜单子菜单就是将相同功能的分组进行多级显示的一种菜单，比如，Windows的“文件”菜单中就有“新建”，“打开”，“关闭”等子菜单。 创建子菜单的方法 覆盖Activity的onCreateOptionsMenu()方法，调用Menu的addSubMenu()方法添加子菜单项 调用SubMenu的add()饭饭，添加子菜单项 覆盖onCreateItemSelected()方法，响应菜单单击事件 123456//程序测试public class HelloWorld &#123; public static void main(String[] args)&#123; System.out.println("Hello World!"); &#125;&#125;]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>安卓</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安卓-开始]]></title>
+    <url>%2F%2Fprogramming%2F2017-06-19-%E5%AE%89%E5%8D%93-%E5%BC%80%E5%A7%8B.html</url>
+    <content type="text"><![CDATA[#什么是Android1.1G-4G 速度不同: 1G：大哥大 2G：小灵通 gsm wap.baidu.com 3G：沃 4G:lte 100M/s 5G:华为 6亿美金 10G/s (小公司卖产品，大公司买版权) 2.Android T-Mobile G1 安迪鲁宾 3.安卓版本介绍 安卓版本 API level 2.3 10 3.0 11 4.0 14 4.1.2 16 4.安卓系统的构成 [1]linux (c) [2]函数库层 (c/c++) |-libraries(开源库) |-andriod runtime [3]Application framework 应用框架层(谷歌工程师封装) [4]最上层 应用层 5.JVM与DVM 由于版权原因 JVM 编译过程:.java-&gt;.class-&gt;.jar 基于架构:基于栈的架构(内存) jdk javac DVM(dalvik vm) 编译过程:.java-&gt;.class-&gt;.dex(一个文件)-&gt;.odex 基于架构:基于寄存器的架构(CPU) sdk dex 6.ART模式 art模式:快，免去了Dalvik模式要实时转化代码 占内存 Dalvik:省内存，慢 #Android开发环境的搭建1.IDE eclipse ibm公司(java开发的) adt-bundle-windows-x86_64(eclips+sdk集成好的) [1]JDK [2]解压即可用 adt-bundle |-eclipse |-plugins(插件文件夹) |-sdk |-docs(帮助文档) |-.android(AVD创建模拟器所需文件) |-add-ons(预留目录) |-sources(各个安卓版本源代码) |-temp(临时文件) |-platforms(开发平台) |-platforms-tools(开发工具) |-dx.bat(把.class变成一个dex文件) |-aapt(Android应用打包工具) |-adb(Android调试桥) |-SDK-Manager.exe Android studio(硬件要求较高) 2.SDK Manager 管理SDK(安卓版本分类) 使用:1.翻墙 2.找国内资源 关于SDK Manager打不开的问题 1.JAVA_HOME环境变量是否设置 2.JAVA_HOME环境变量格式 注意要加上双引号 ×D:\Program Files\Java\jdk1.7.0_79 √&quot;D:\Program Files\Java\jdk1.7.0_79&quot; intel:生产CPU arm:生产标准 mips:生产处理器 Extras文件夹: android额外的lib Intel加速器 USB Driver:真机驱动 3.模拟器 1.真机调试 [1]手机助手 [2]官网驱动 2.模拟器 配置低(小屏幕) 常见:320*480/480*800/1280*720 Target手机版本 安卓版本 API level 2.3 10 3.0 11 4.0 14 4.1.2 16 CPU:AMD-&gt;ARM Intel-&gt;Intel RAM:随机访问内存(相当于电脑内存条,断电丢数据) ROM:只读存储器(相当于与一块小硬盘) Internal Storage:内置存储器 VM Heap:DVM默认给每个应用分配的空间 Wipe user data:删除用户数据(恢复出厂设置) 4.DDMS透视图 调试监控服务工具 #Android工程 1.安卓项目树 ProjectName |-src(存放源代码) |-gen(存放R文件，R文件是资源索引) |-Android 4.3(安卓的SDK库和API库) |-Android Dependencies(其他的jar包,比如android-support.jar版本支持包) |-assets(资产目录:多用来存放mp3,视频类文件,此文件夹文件不会在R文件产生索引) |-bin(APK文件) |-libs(额外的jar包) |-res(资源目录) | |-drawable(图片资源) | |-layout(界面布局) | |-values(字符串) |-AndroidManifest.xml(清单文件:配置四大组件 &lt;Activity/broadCastReceiver/service/ContentProvider&gt; ) 2.程序打包&amp;安装 工具集在&lt;D:\devSoft\adt\sdk\platform-tools&gt; dx.bat(把.class变成一个dex文件) aapt(Android应用打包工具) adb(Android调试桥) 3.ADB指令练习 1.配置环境变量path D:\devSoft\adt\sdk\platform-tools 2.使用 [1]kill-server 杀死adb服务 [2]start-server 开启服务 [3]adb install apkName 部署在模拟器 [4]adb uninstall 包名 卸载app [5]adb shell 手机终端(linux指令) 退出Crtl+C [6]adb push 文件名 手机目录 文件到手机 [7]adb pull 文件路径 文件到电脑 #手机拨号器案例 1.开发步骤 [0]需求分析 [1]画UI [2]根据UI写对应的业务逻辑 [3]测试 2.按钮的四种点击事件]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>安卓</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo部署步骤]]></title>
+    <url>%2F%2Fprogramming%2F2017-06-18-hexo%E9%83%A8%E7%BD%B2%E6%AD%A5%E9%AA%A4.html</url>
+    <content type="text"><![CDATA[部署步骤每次部署的步骤，可按以下三步来进行。hexo clean hexo generate hexo deploy 一些常用命令：hexo new&quot;postName&quot; #新建文章 hexo new page&quot;pageName&quot; #新建页面 hexo generate #生成静态页面至public目录 hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server） hexo deploy #将.deploy目录部署到GitHub hexo help # 查看帮助 hexo version #查看Hexo的版本]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[我的第一篇]]></title>
+    <url>%2F%2Funcategorized%2F2017-06-18-%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87.html</url>
+    <content type="text"><![CDATA[你好，欢迎来到我的博客]]></content>
+  </entry>
+</search>
