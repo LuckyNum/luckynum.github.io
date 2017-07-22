@@ -5,7 +5,7 @@ node_js:
 # 设置自动化部署的源码分支
 branches:
   only:
-  - master  
+  - dev  
   
 # 下面是你的Token加密信息，不要替换
 env:
