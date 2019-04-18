@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Nginx - 安装 | ATOZ</title>
+<meta name="description" content="Hello, World!">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://luckynum.github.io/favicon.ico?v=1555557744987">
+<link rel="stylesheet" href="https://luckynum.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://luckynum.github.io">
+        <img class="avatar" src="https://luckynum.github.io/images/avatar.png?v=1555557744987" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://luckynum.github.io">
+        <h1 class="site-title">ATOZ</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a href="/post/music/" class="menu purple-link">
+            音乐🎵
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Nginx - 安装</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-04-18</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://luckynum.github.io/tag/3DT5dCuY4">
+                    nginx
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p><em><strong>推荐使用第二种源码编译安装方式</strong></em></p>
+<h2 id="1-yum安装无法增加其他模块">1. yum安装（无法增加其他模块）</h2>
+<ul>
+<li>
+<p><strong>安装准备</strong></p>
+<ul>
+<li>环境配置（centos7）</li>
+</ul>
+</li>
+</ul>
+<!-- more --> 
+<pre><code class="language-shell"># 关闭防火墙
+systemctl firewalld stop
+# 关闭selinux
+getenforce
+setenforce 0
+</code></pre>
+<ul>
+<li>安装准备</li>
+</ul>
+<pre><code class="language-shell"># 软件安装
+yum -y install gcc gcc-c++ autoconf pcre pcre-devel make automake
+[可选] yum -y install wget httpd-tools vim
+# 创建目录
+mkdir /opt/nginx
+cd /opt/nginx
+mkdir app download logs work backup
+</code></pre>
+<ul>
+<li>
+<p><strong>安装</strong></p>
+<ul>
+<li>版本区别</li>
+</ul>
+<p>Mainline version：开发版</p>
+<p>Stable version：稳定版</p>
+<p>Legacy versions：历史版本</p>
+<ul>
+<li>配置yum源</li>
+</ul>
+<blockquote>
+<p>To set up the yum repository for RHEL/CentOS, create the file named /etc/yum.repos.d/nginx.repo with the following contents:</p>
+<p>[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/
+gpgcheck=0
+enabled=1</p>
+</blockquote>
+<ul>
+<li>安装</li>
+</ul>
+<pre><code class="language-shell">yum list | grep nginx
+yum -y install nginx
+nginx -v 查看版本
+nginx -V 查看配置参数
+</code></pre>
+</li>
+<li>
+<p><strong>基本参数</strong></p>
+<p>查看：rpm -ql nginx</p>
+</li>
+</ul>
+<h2 id="2-源码安装可编译其他模块">2. 源码安装（可编译其他模块）</h2>
+<ul>
+<li><strong>下载</strong></li>
+</ul>
+<p>官网：http://nginx.org/en/download.html，选择Stable version</p>
+<pre><code class="language-shell"># 下载
+wget http://nginx.org/download/nginx-1.14.2.tar.gz
+# 解压
+tar -zxvf nginx-1.14.2.tar.gz
+</code></pre>
+<p>目录结构：</p>
+<pre><code class="language-shell">nginx-1.14.2
+├── auto		编译时make使用
+├── CHANGES		change log
+├── CHANGES.ru	change log
+├── conf		配置样例
+├── configure	生成中间文件
+├── contrib		工具，vim高亮显示：cp -r contrib/vim/* ~/.vim/
+├── html		默认html文件
+├── LICENSE		证书
+├── man			帮助文件
+├── README		说明文件
+└── src			源代码
+</code></pre>
+<ul>
+<li><strong>configure</strong></li>
+</ul>
+<pre><code class="language-shell"># 查看配置参数
+./configure --help | more
+# 配置/home/app/nginx
+./configure --prefix=/home/app/nginx
+</code></pre>
+<p>生成中间文件在objs下</p>
+<pre><code class="language-shell">objs
+├── autoconf.err
+├── Makefile
+├── ngx_auto_config.h
+├── ngx_auto_headers.h
+├── ngx_modules.c		决定哪些模块会被编译进nginx二进制文件中
+└── src
+</code></pre>
+<ul>
+<li><strong>编译</strong></li>
+</ul>
+<pre><code class="language-shell"># 编译
+make
+</code></pre>
+<p>生成编译结果在objs下：</p>
+<pre><code class="language-shell">objs
+├── autoconf.err
+├── Makefile
+├── nginx				可执行二进制文件
+├── nginx.8
+├── ngx_auto_config.h
+├── ngx_auto_headers.h
+├── ngx_modules.c
+├── ngx_modules.o
+└── src					c编译生成的中间文件
+    ├── core
+    ├── event
+    ├── http
+    ├── mail
+    ├── misc
+    ├── os
+    └── stream
+</code></pre>
+<ul>
+<li><strong>安装</strong>（首次安装使用）</li>
+</ul>
+<pre><code class="language-shell">make install
+</code></pre>
+<p>安装到配置的路径<code>/home/app/nginx</code></p>
+<pre><code class="language-shell">nginx
+├── conf							配置文件
+│   ├── fastcgi.conf
+│   ├── fastcgi.conf.default
+│   ├── fastcgi_params
+│   ├── fastcgi_params.default
+│   ├── koi-utf
+│   ├── koi-win
+│   ├── mime.types
+│   ├── mime.types.default
+│   ├── nginx.conf
+│   ├── nginx.conf.default
+│   ├── scgi_params
+│   ├── scgi_params.default
+│   ├── uwsgi_params
+│   ├── uwsgi_params.default
+│   └── win-utf
+├── html							默认页面
+│   ├── 50x.html
+│   └── index.html
+├── logs							日志目录
+└── sbin							可执行二进制文件
+    └── nginx
+</code></pre>
+<h2 id="3-启停操作">3. 启停操作</h2>
+<blockquote>
+<p>Nginx支持2种进程模型<code>Single</code>和<code>Master-Worker</code></p>
+<p>Single是单进程，一般不适用，Master-Worker是主进程和工作进程模型运行，主进程对工作进程管理。</p>
+<p>Nginx允许我们通过信号来控制主进程，用信号的方式可以达到不影响现有连接的目的。</p>
+</blockquote>
+<p>nginx控制方式：nginx自带命令，linux信号控制。两者可配合使用（如热部署）</p>
+<h3 id="1nginx命令行">1.nginx命令行</h3>
+<p>格式：<code>nginx -s reload</code></p>
+<p>帮助：<code>-? -h</code></p>
+<p>指定配置文件：<code>-c</code></p>
+<p>指定运行目录：<code>-p</code>（替换logs等目录）</p>
+<p>发送信号：<code>-s</code> （立即停止：<code>stop</code>，优雅的停止：<code>quit</code>，重载配置文件：<code>reload</code>，重新记录日志：<code>reopen</code>）</p>
+<p>测试配置文件语法：<code>-t -T</code></p>
+<p>打印版本、编译信息：<code>-v -V</code></p>
+<p><strong>使用举例：</strong></p>
+<p><strong>1）nginx启动</strong></p>
+<p>指令：nginx程序   -c   nginx配置文件</p>
+<pre><code class="language-shell"># /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+</code></pre>
+<p><strong>2）nginx重启</strong></p>
+<p>进入nginx可执行程序的目录</p>
+<pre><code class="language-shell"># cd /usr/local/nginx/sbin/
+# ./nginx -s reload
+</code></pre>
+<blockquote>
+<p>nginx: [error] invalid PID number &quot;&quot; in &quot;/usr/local/nginx/logs/nginx.pid&quot;</p>
+<p>重启是建立在nginx服务已启动</p>
+</blockquote>
+<p><strong>3）nginx停止</strong></p>
+<pre><code class="language-shell"># ./nginx -s stop
+# ./nginx -s quit
+</code></pre>
+<p><code>quit</code> 是一个优雅的关闭方式，Nginx在退出前完成已经接受的连接请求</p>
+<p><code>stop</code> 是快速关闭，不管有没有正在处理的请求。</p>
+<p><strong>4）重新打开日志</strong></p>
+<pre><code class="language-shell"># ./nginx -s reopen
+</code></pre>
+<p><strong>5）nginx检查配置文件</strong></p>
+<p>检查配置文件是否正确</p>
+<p>第一种</p>
+<p>进入nginx可执行程序的目录</p>
+<pre><code class="language-shell"># cd /usr/local/nginx/sbin/
+# ./nginx -t
+</code></pre>
+<p>第二种</p>
+<pre><code class="language-shell"># /usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.con
+</code></pre>
+<h3 id="2信号控制">2.信号控制</h3>
+<p><strong>1）信号类型</strong></p>
+<p>INT，TERM			快速关闭信号</p>
+<p>QUIT				从容关闭信号</p>
+<p>HUP				从容重启信号，一般用于修改配置文件后，重启</p>
+<p>USR1				重读日志，一般用于日志的切割</p>
+<p>USR2				平滑升级信号</p>
+<p>WINCH				从容关闭旧进程</p>
+<p><strong>2）具体使用:</strong></p>
+<p>kill    -信号选项    nginx的主进程号</p>
+<p>例：</p>
+<pre><code class="language-shell">kill -INT 26661
+kill -HUP 4873
+</code></pre>
+<ul>
+<li><strong>nginx停止</strong></li>
+</ul>
+<pre><code class="language-shell">ps -ef | grep nginx  #获得进程号
+</code></pre>
+<p><em>第1种从容“优雅”停止</em></p>
+<pre><code class="language-shell"># kill -QUIT master进程号
+# Nginx服务可以正常地处理完当前所有请求再停止服务
+# 步骤：首先会关闭监听端口，停止接收新的连接，然后把当前正在处理的连接全部处理完，最后再退出进程。
+</code></pre>
+<p><em>第2种快速停止</em></p>
+<pre><code class="language-shell"># kill -TERM master进程号
+# kill -INT master进程号
+# 快速停止服务时，worker进程与master进程在收到信号后会立刻跳出循环，退出进程。
+</code></pre>
+<p><em>第3种强制停止</em></p>
+<pre><code class="language-shell"># kill -9 nginx
+# 系统强杀nginx进程 
+</code></pre>
+<ul>
+<li><strong>重启nginx</strong></li>
+</ul>
+<pre><code class="language-shell"># kill -HUP master进程号
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://luckynum.github.io/post/zsh-an-zhuang-andpei-zhi">
+              <h3 class="post-title">
+                下一篇：ZSH安装&amp;配置
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">Hello, World!</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
