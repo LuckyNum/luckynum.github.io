@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>Tomcat - 日志处理 | ATOZ</title>
+<meta name="description" content="Hello, World!">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://luckynum.github.io/favicon.ico?v=1555989798849">
+<link rel="stylesheet" href="https://luckynum.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://luckynum.github.io">
+        <img class="avatar" src="https://luckynum.github.io/images/avatar.png?v=1555989798849" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://luckynum.github.io">
+        <h1 class="site-title">ATOZ</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a href="/post/music/" class="menu purple-link">
+            音乐🎵
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">Tomcat - 日志处理</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-04-23</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://luckynum.github.io/tag/3tLqYheHY">
+                    tomcat
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h2 id="tomcat日志详解">tomcat日志详解</h2>
+<h3 id="1-tomcat-日志配置文件">1.  tomcat 日志配置文件</h3>
+<p><strong>tomcat 对应日志的配置文件</strong>：tomcat目录下的/conf/logging.properties。</p>
+<p>**tomcat 的日志等级有：**日志输出级别：SEVERE (最高级别) &gt; WARNING &gt; INFO &gt; CONFIG &gt; FINE &gt; FINER(精心) &gt; FINEST (所有内容,最低级别)</p>
+<p>**tomcat  有五类日志 ：**catalina、localhost、manager、admin、host-manager</p>
+<p><code>conf/logging.properties</code> 配置文件</p>
+<h3 id="2-tomcat日志文件详解">2. tomcat日志文件详解</h3>
+<p>**tomcat  有五类日志 ：**catalina、localhost、manager、admin、host-manager</p>
+<h4 id="catalinaout">catalina.out</h4>
+<p>catalina.out即标准输出和标准出错，所有输出到这两个位置的都会进入catalina.out，这里包含tomcat运行自己输出的日志以及应用里向console输出的日志。默认这个日志文件是不会进行自动切割的，我们需要借助其他工具进行切割（注意：catalina.out文件如果过大会影响）</p>
+<h4 id="catalinayyyy-mm-ddlog">catalina.YYYY-MM-DD.log</h4>
+<p>catalina.{yyyy-MM-dd}.log是tomcat自己运行的一些日志，这些日志还会输出到catalina.out，但是应用向console输出的日志不会输出到catalina.{yyyy-MM-dd}.log,它是tomcat的启动和暂停时的运行日志，<strong>注意，它和catalina.out是里面的内容是不一样的。</strong></p>
+<h4 id="localhostyyyy-mm-ddlog">**localhost.**YYYY-MM-DD.log</h4>
+<p>localhost.{yyyy-MM-dd}.log主要是应用初始化(listener, filter, servlet)未处理的异常最后被tomcat捕获而输出的日志,它也是包含tomcat的启动和暂停时的运行日志,但它没有catalina.2018-09-19.log 日志全。它只是记录了部分日志。</p>
+<h4 id="localhost_access_logyyyy-mm-ddtxt">localhost_access_log.YYYY-MM-DD.txt</h4>
+<p>localhost_access_log.2018-09-19.txt：这个是访问tomcat的日志，请求时间和资源，状态码都有记录。</p>
+<h4 id="host-manageryyyy-mm-ddlog">host-manager.YYYY-MM-DD.log</h4>
+<p>host-manager.2018-09-19.log：这个估计是放tomcat的自带的manager项目的日志信息的，未看到有什么重要的日志信息。</p>
+<h4 id="manageryyyy-mm-ddlog"><strong>manager.YYYY-MM-DD.log</strong></h4>
+<p>manager.2018-09-19.log  ：　这个是tomcat manager项目专有的日志文件.</p>
+<h2 id="tomcat日志切割-清理">tomcat日志切割、清理</h2>
+<h3 id="1-切割工具cronolog">1. 切割工具cronolog</h3>
+<p>Cronolog是一个过滤器程序，它从标准输入读取日志文件条目，并将每个条目写入由文件名模板和当前日志所指定的输出文件中。 当扩展文件名改变时，关闭当前文件，并打开一个新文件。 Cronolog是为了与Apache等Web服务器一起使用，将访问日志分为每日或每月日志。</p>
+<h4 id="cronolog的安装">cronolog的安装</h4>
+<ul>
+<li>下载cronolog</li>
+</ul>
+<pre><code class="language-bash">[root@kafka01 src]# cd /usr/local/src
+[root@kafka01 src]# wget https://files.cnblogs.com/files/crazyzero/cronolog-1.6.2.tar.gz
+[root@kafka01 src]# md5sum cronolog-1.6.2.tar.gz
+a44564fd5a5b061a5691b9a837d04979  cronolog-1.6.2.tar.gz         #&lt;==cronolog的MD5码
+</code></pre>
+<ul>
+<li>编译安装</li>
+</ul>
+<pre><code class="language-bash">[root@kafka01 src]# tar xf cronolog-1.6.2.tar.gz
+[root@kafka01 src]# cd cronolog-1.6.2
+[root@kafka01 cronolog-1.6.2]# ./configure          #&lt;==编译，此前先确保安装cmake等编译工具
+[root@kafka01 cronolog-1.6.2]# make &amp;&amp; make install #&lt;==安装
+[root@kafka01 cronolog-1.6.2]# which cronolog       #&lt;==检查是否安装成功，如果有结果则安装成功
+/usr/local/sbin/cronolog
+</code></pre>
+<ul>
+<li>cronolog命令</li>
+</ul>
+<pre><code class="language-bash">[root@server1 ~]# which cronolog
+/usr/local/sbin/cronolog            #&lt;==cronolog命令的存放路径
+使用man帮助命令查看cronolog使用语法：
+[root@server1 ~]# man cronolog
+NAME
+       cronolog - write log messages to log files named according to a template
+ 
+SYNOPSIS
+       cronolog [OPTION]... template
+</code></pre>
+<h3 id="2-配置tomcat日志切割">2. 配置tomcat日志切割</h3>
+<p>配置日志切割，只需修改配置文件catalina.sh（如果windows则是catalina.bat，这里不介绍windows情况）即可。大概在catalina文件中的第380行和第390行左右，修改如下：</p>
+<p>（1）内容：</p>
+<pre><code class="language-sh">org.apache.catalina.startup.Bootstrap &quot;$@&quot; start \
+&gt;&gt; &quot;$CATALINA_OUT&quot; 2&gt;&amp;1 &quot;&amp;&quot;
+</code></pre>
+<p>替换为：</p>
+<pre><code class="language-sh">org.apache.catalina.startup.Bootstrap &quot;$@&quot; start \
+2&gt;&amp;1 |/usr/local/sbin/cronolog &quot;$CATALINA_BASE/logs/catalina-%Y-%m-%d.out&quot; &amp;
+</code></pre>
+<p>（2）内容：</p>
+<pre><code class="language-sh">org.apache.catalina.startup.Bootstrap &quot;$@&quot; start \
+&gt;&gt; &quot;$CATALINA_OUT&quot; 2&gt;&amp;1 &quot;&amp;&quot;
+</code></pre>
+<p>替换为：</p>
+<pre><code class="language-sh">org.apache.catalina.startup.Bootstrap &quot;$@&quot; start \
+2&gt;&amp;1 |/usr/local/sbin/cronolog &quot;$CATALINA_BASE/logs/catalina-%Y-%m-%d.out&quot; &amp;
+</code></pre>
+<p><img src="https://luckynum.github.io/post-images/1555989728476.png" alt=""></p>
+<p>配置完成后，重启tomcat即可！</p>
+<h3 id="3定时删除-备份过期日志">3.定时删除、备份过期日志</h3>
+<p>在这里直接使用linux自带的crontab定时任务工具，设置每天凌晨00:00执行删除任务，删除7天以前的日志文件。</p>
+<p>删除</p>
+<pre><code class="language-bash">[root@server1 ~]# crontab -e          #&lt;==直接输入该命令，添加一个定时任务计划
+00 00 * * * /bin/find /opt/gdyy/tomcat7/logs/ -type f -mtime +7 | xargs rm -f  &amp;&gt;/dev/null  #&lt;==查找tomcat/logs下面的日志文件，并删除7天以前的日志，添加完成后保存退出！！
+</code></pre>
+<p>备份</p>
+<pre><code class="language-bash">[root@server1 ~]# crontab -l    #&lt;==查看定时任务计划
+#remove gw log 7 days ago by liutao at 2018-02-08
+00 00 * * * /bin/find /opt/gw/tomcat7/logs/ -type f -mtime +7 | xargs -i mv {} /data/bak/gw_log/  &amp;&gt;/dev/null
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://luckynum.github.io/post/nginx-an-zhuang">
+              <h3 class="post-title">
+                下一篇：Nginx - 安装
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">Hello, World!</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
